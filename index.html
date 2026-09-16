@@ -216,6 +216,14 @@ footer a{color:inherit}
  </section>
 
  <!-- 내 정보 -->
+ <section id="p-stat" class="pane">
+  <div class="empty" id="stat-empty" style="text-align:left">
+   <h3>아직 볼 게 없어요</h3>
+   <p>카드를 담고 테이스팅 노트를 쓰면 여기에 내 취향이 그려집니다.</p>
+  </div>
+  <div id="stat-body"></div>
+ </section>
+
  <section id="p-me" class="pane">
   <div class="empty" style="text-align:left">
    <h3>내 기록</h3>
@@ -226,8 +234,6 @@ footer a{color:inherit}
    </div>
    <input type="file" id="file" accept="application/json" hidden>
   </div>
-  <div class="empty" id="me-area" style="text-align:left;margin-top:12px"></div>
-  <div class="empty" id="me-taste" style="text-align:left;margin-top:12px"></div>
   <div class="empty" style="text-align:left;margin-top:12px">
    <h3>저장 위치</h3>
    <p>기록은 <b>이 브라우저에만</b> 저장됩니다. 서버로 전송하지 않습니다.
@@ -244,7 +250,8 @@ footer a{color:inherit}
  <button data-go="home" class="on"><b>家</b>홈</button>
  <button data-go="dex"><b>図</b>도감</button>
  <button data-go="mine"><b>酒</b>내 카드</button>
- <button data-go="me"><b>記</b>내 기록</button>
+ <button data-go="stat"><b>析</b>분석</button>
+ <button data-go="me"><b>記</b>기록</button>
 </nav>
 
 <div class="install" id="install" hidden>
@@ -258,5 +265,5 @@ footer a{color:inherit}
 </div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260916152512"></script>
+<script src="./app.min.js?v=20260916160217"></script>
 </body></html>
