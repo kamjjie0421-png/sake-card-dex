@@ -1,0 +1,223 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>사케 카드 — 마신 술을 카드로 모으는 도감</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="사케 카드">
+<meta name="description" content="사케를 찾아보고, 마신 술을 카드로 모으고, 맛 6축으로 테이스팅 노트를 남기는 도감 앱.">
+<style>
+:root{--bg:#e7e4dc;--card:#f4f1e9;--ink:#211d18;--ink2:#6b655b;--ink3:#9a9284;--line:#ded8ca;
+ --hair:#cfc7b6;--gold:#b5872c;--me:#1f6f4a;
+ --disp:"Yu Mincho","Hiragino Mincho ProN","Nanum Myeongjo",serif;
+ --body:system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif;--mono:ui-monospace,Menlo,monospace}
+@media(prefers-color-scheme:dark){:root{--bg:#151412;--card:#1f1d1a;--ink:#efe9dd;--ink2:#a7a093;
+ --ink3:#6f6a5f;--line:#2f2c27;--hair:#3a352d;--me:#4fb07f}}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);word-break:keep-all;
+ -webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom)}
+a{color:inherit}
+.app{max-width:760px;margin:0 auto;padding:0 16px 96px}
+header{padding:22px 0 10px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase}
+h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
+.sub{color:var(--ink2);font-size:13px;margin-top:5px;line-height:1.6}
+
+/* 하단 탭 — 앱처럼 */
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);
+ display:flex;z-index:40;padding-bottom:env(safe-area-inset-bottom)}
+.nav button{flex:1;padding:11px 4px 10px;border:0;background:transparent;color:var(--ink3);
+ font:inherit;font-size:10.5px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}
+.nav button b{font-family:var(--disp);font-size:17px;font-weight:500;line-height:1}
+.nav button.on{color:var(--ink)}
+.nav button.on b{color:var(--gold)}
+
+.pane{display:none}.pane.on{display:block}
+
+/* 홈 통계 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 4px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 6px;text-align:center}
+.stat b{display:block;font-family:var(--disp);font-size:21px;line-height:1}
+.stat span{display:block;font-size:9.5px;color:var(--ink3);margin-top:5px}
+.empty{background:var(--card);border:1px dashed var(--hair);border-radius:13px;padding:26px 20px;
+ text-align:center;margin-top:16px}
+.empty h3{font-family:var(--disp);font-size:17px;font-weight:500;margin-bottom:7px}
+.empty p{font-size:13px;color:var(--ink2);line-height:1.7}
+.btn{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:9px;border:0;
+ background:var(--ink);color:var(--bg);font:inherit;font-size:13.5px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+/* 검색 */
+.toolbar{display:flex;gap:8px;margin:14px 0 10px;position:sticky;top:0;background:var(--bg);
+ padding:8px 0;z-index:20}
+.toolbar input,.toolbar select{font:inherit;font-size:13.5px;padding:10px 12px;border-radius:9px;
+ border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.toolbar input{flex:1;min-width:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chip{padding:5px 12px;border-radius:99px;border:1px solid var(--line);font-size:12px;
+ background:transparent;color:var(--ink2);cursor:pointer}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* 카드 그리드 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.c{aspect-ratio:63/92;border-radius:12px;position:relative;overflow:hidden;cursor:pointer;
+ background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;
+ justify-content:flex-end;padding:12px 12px 11px}
+.c.prem{background:linear-gradient(168deg,#232019,#15130f);border-color:#3a3225}
+.c .band{position:absolute;top:0;left:0;right:0;height:4px}
+.c .glyph{position:absolute;top:10px;left:11px;width:23px;height:23px;border-radius:50%;
+ border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;
+ font-family:var(--disp);font-size:11px;color:var(--ink2)}
+.c.prem .glyph{border-color:rgba(201,168,106,.5);color:#c9a86a}
+.c .jp{font-family:var(--disp);font-size:23px;line-height:1.1}
+.c.prem .jp{color:#efe6d4}
+.c .ko{font-size:10.5px;color:var(--ink2);margin-top:3px;line-height:1.4;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.c.prem .ko{color:#b7ac97}
+.c .foot{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:7px;
+ border-top:1px solid var(--hair);font-size:9px;color:var(--ink3);font-family:var(--mono)}
+.c.prem .foot{border-color:rgba(201,168,106,.25);color:rgba(201,168,106,.75)}
+.c.locked{opacity:.42;filter:saturate(.25)}
+.c .noted{position:absolute;top:10px;right:11px;font-family:var(--disp);font-size:12px;color:var(--gold)}
+.more{display:block;width:100%;margin-top:18px;padding:12px;border-radius:10px;border:1px solid var(--line);
+ background:transparent;color:var(--ink2);font:inherit;font-size:13px;cursor:pointer}
+.count{font-size:11.5px;color:var(--ink3);margin-bottom:10px;font-family:var(--mono)}
+
+/* 상세 시트 */
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:60;display:none;
+ align-items:flex-end;justify-content:center}
+.sheet.on{display:flex}
+.sheet .box{background:var(--bg);width:100%;max-width:760px;max-height:92vh;overflow:auto;
+ border-radius:18px 18px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom))}
+.sheet .bar{width:38px;height:4px;border-radius:99px;background:var(--hair);margin:0 auto 14px}
+.sheet h2{font-family:var(--disp);font-size:27px;font-weight:500}
+.sheet .meta{font-size:12px;color:var(--ink2);margin-top:4px}
+.acts{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.acts button{flex:1;min-width:130px;padding:12px;border-radius:10px;border:1px solid var(--line);
+ background:transparent;color:var(--ink);font:inherit;font-size:13.5px;cursor:pointer}
+.acts button.pri{background:var(--me);color:#fff;border-color:var(--me)}
+.acts button.del{color:#a8534a}
+.radar{display:block;margin:14px auto 4px}
+.legend{text-align:center;font-size:11px;color:var(--ink3)}
+.sec{margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}
+.sec h3{font-size:11px;letter-spacing:.06em;color:var(--ink3);font-weight:600;margin-bottom:9px}
+.temps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.temp{padding:8px 3px;border-radius:9px;border:1px solid var(--line);text-align:center;cursor:pointer}
+.temp b{display:block;font-family:var(--disp);font-size:14px}
+.temp span{display:block;font-size:8.5px;color:var(--ink3);margin-top:2px;line-height:1.3}
+.temp.on{border-color:var(--me);box-shadow:inset 0 0 0 1px var(--me)}
+textarea{width:100%;min-height:58px;padding:10px;font:inherit;font-size:13.5px;border-radius:9px;
+ border:1px solid var(--line);background:transparent;color:var(--ink);resize:vertical}
+.again{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ag{padding:9px 3px;border-radius:9px;border:1px solid var(--line);text-align:center;font-size:12.5px;cursor:pointer}
+.ag.on{background:var(--me);color:#fff;border-color:var(--me)}
+.hist{display:flex;flex-direction:column;gap:6px}
+.hrow{display:flex;gap:10px;align-items:baseline;padding:8px 11px;border-radius:9px;
+ border:1px solid var(--line);cursor:pointer;font-size:12.5px}
+.hrow:hover{border-color:var(--me)}
+.hrow b{font-family:var(--mono);font-size:11px;color:var(--ink3);flex:none}
+.hrow span{color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.diff{font-size:12.5px;color:var(--ink2);line-height:1.6;margin-top:8px}
+.diff b{color:var(--ink)}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+ font-size:11.5px;color:var(--ink3);line-height:1.7}
+footer a{color:inherit}
+.toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
+ padding:10px 18px;border-radius:99px;font-size:13px;z-index:70;opacity:0;pointer-events:none;
+ transition:opacity .25s}
+.toast.on{opacity:1}
+</style></head><body>
+<div class="app">
+ <header>
+  <p class="eyebrow">Sake Card</p>
+  <h1 id="ttl">사케 카드</h1>
+  <p class="sub" id="sub">마신 사케를 카드로 모으고, 맛을 6축으로 그려 기록합니다.</p>
+ </header>
+
+ <!-- 홈 -->
+ <section id="p-home" class="pane on">
+  <div class="stats">
+   <div class="stat"><b id="s-mine">0</b><span>내 카드</span></div>
+   <div class="stat"><b id="s-note">0</b><span>노트</span></div>
+   <div class="stat"><b id="s-brew">0</b><span>양조장</span></div>
+   <div class="stat"><b id="s-dex">0</b><span>도감</span></div>
+  </div>
+  <div id="home-empty" class="empty">
+   <h3>첫 카드를 만들어 보세요</h3>
+   <p>도감에서 마신 사케를 찾아 <b>「마셨어요」</b>를 누르면 카드가 됩니다.<br>
+      카드를 열면 맛 6축을 그려 테이스팅 노트를 남길 수 있습니다.</p>
+   <button class="btn" onclick="go('dex')">도감에서 찾기</button>
+  </div>
+  <div id="home-recent"></div>
+ </section>
+
+ <!-- 도감 -->
+ <section id="p-dex" class="pane">
+  <div class="toolbar">
+   <input id="q" type="search" placeholder="사케명 · 양조장 · 지역" autocomplete="off">
+   <select id="sort"><option value="pop">인기순</option><option value="jp">이름순</option></select>
+  </div>
+  <div class="chips" id="dex-chips"></div>
+  <p class="count" id="dex-count"></p>
+  <div class="grid" id="dex-grid"></div>
+  <button class="more" id="dex-more" hidden>더 보기</button>
+  <div class="empty" id="dex-none" style="margin-top:18px">
+   <h3>찾는 술이 없나요?</h3>
+   <p>도감은 사케노와 데이터 기준이라 여기에 없는 술도 있습니다.<br>
+      이름만 알면 직접 카드로 만들 수 있습니다.</p>
+   <button class="btn" id="a-manual">직접 추가하기</button>
+  </div>
+ </section>
+
+ <!-- 내 카드 -->
+ <section id="p-mine" class="pane">
+  <div class="toolbar">
+   <input id="mq" type="search" placeholder="내 카드에서 찾기" autocomplete="off">
+   <select id="msort"><option value="new">최근순</option><option value="jp">이름순</option></select>
+  </div>
+  <div class="chips" id="mine-chips"></div>
+  <p class="count" id="mine-count"></p>
+  <div class="grid" id="mine-grid"></div>
+  <div id="mine-empty" class="empty" hidden>
+   <h3>아직 담은 카드가 없습니다</h3>
+   <p>도감에서 마신 사케를 찾아 담아보세요.</p>
+   <button class="btn" onclick="go('dex')">도감 열기</button>
+  </div>
+ </section>
+
+ <!-- 내 정보 -->
+ <section id="p-me" class="pane">
+  <div class="empty" style="text-align:left">
+   <h3>내 기록</h3>
+   <p id="me-sum">—</p>
+   <div class="acts" style="margin-top:16px">
+    <button id="exp">내 기록 내보내기</button>
+    <button id="imp" class="ghost">가져오기</button>
+   </div>
+   <input type="file" id="file" accept="application/json" hidden>
+  </div>
+  <div class="empty" style="text-align:left;margin-top:12px">
+   <h3>저장 위치</h3>
+   <p>기록은 <b>이 브라우저에만</b> 저장됩니다. 서버로 전송하지 않습니다.
+      기기를 바꾸거나 지우면 사라지니, 가끔 <b>내보내기</b>로 백업해 두세요.</p>
+  </div>
+  <footer>
+   브랜드·양조장·맛 데이터: さけのわデータ (<a href="https://sakenowa.com" target="_blank" rel="noopener">sakenowa.com</a>) のデータを加工して利用しています<br>
+   <span id="build"></span>
+  </footer>
+ </section>
+</div>
+
+<nav class="nav">
+ <button data-go="home" class="on"><b>家</b>홈</button>
+ <button data-go="dex"><b>図</b>도감</button>
+ <button data-go="mine"><b>酒</b>내 카드</button>
+ <button data-go="me"><b>記</b>내 기록</button>
+</nav>
+
+<div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
+<div class="toast" id="toast"></div>
+<script src="./app.min.js"></script>
+</body></html>
