@@ -11,6 +11,17 @@
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme:dark)">
 <meta name="apple-mobile-web-app-title" content="사케 카드">
 <meta name="description" content="사케를 찾아보고, 마신 술을 카드로 모으고, 맛 6축으로 테이스팅 노트를 남기는 도감 앱.">
+<!-- 링크 미리보기(카톡·블로그·인스타). og:image 는 절대 주소여야 한다 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="사케 카드">
+<meta property="og:title" content="사케 카드 — 마신 술을 카드로 모으는 도감">
+<meta property="og:description" content="사케 1,354종 도감에서 마신 술을 찾아 카드로 모으고, 맛 6축으로 테이스팅 노트를 남깁니다. 계정도, 서버도 없습니다.">
+<meta property="og:url" content="https://kamjjie0421-png.github.io/sake-card-dex/">
+<meta property="og:image" content="https://kamjjie0421-png.github.io/sake-card-dex/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="사케 카드 세 장이 겹쳐 있는 그림과 「마신 사케를 카드로 모읍니다」라는 문구">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--bg:#e7e4dc;--card:#f4f1e9;--ink:#211d18;--ink2:#6b655b;--ink3:#9a9284;--line:#ded8ca;
  --hair:#cfc7b6;--gold:#b5872c;--me:#1f6f4a;
@@ -70,6 +81,7 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
  background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;
  justify-content:flex-end;padding:12px 12px 11px}
 .c.prem{background:linear-gradient(168deg,#232019,#15130f);border-color:#3a3225}
+@media(prefers-color-scheme:dark){.c.prem{border-color:#6d5c33;box-shadow:inset 0 0 0 1px rgba(181,135,44,.18)}}
 .c .band{position:absolute;top:0;left:0;right:0;height:4px}
 .c .glyph{position:absolute;top:10px;left:11px;width:23px;height:23px;border-radius:50%;
  border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;
@@ -243,5 +255,5 @@ footer a{color:inherit}
 </div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260916142604"></script>
+<script src="./app.min.js?v=20260916143913"></script>
 </body></html>
