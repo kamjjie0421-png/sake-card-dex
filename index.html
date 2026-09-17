@@ -112,8 +112,15 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
 .c .face::after{content:'';position:absolute;inset:0;pointer-events:none;
  background:linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 32%,
   rgba(255,255,255,0) 60%,rgba(255,255,255,.1) 100%);opacity:.5}
-.c.prem .face::after{background:linear-gradient(115deg,rgba(181,135,44,.12) 0%,rgba(181,135,44,0) 34%,
-  rgba(181,135,44,0) 62%,rgba(255,240,200,.14) 100%);opacity:.9}
+.c.prem .face::after{
+ background:linear-gradient(112deg,
+   rgba(255,255,255,0) 30%, rgba(255,255,255,.5) 42%,
+   rgba(255,238,190,.55) 47%, rgba(181,135,44,.3) 52%,
+   rgba(255,255,255,0) 64%);
+ background-size:280% 100%;opacity:.85;
+ animation:shine 5.2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes shine{0%,62%{background-position:135% 0}100%{background-position:-55% 0}}
+@media(prefers-reduced-motion:reduce){.c.prem .face::after{animation:none}}
 .c .band{position:absolute;top:0;left:0;right:0;height:4px;z-index:1}
 .c .pic{position:absolute;left:6%;right:6%;top:7%;width:88%;height:54%;
  object-fit:contain;object-position:center;z-index:0}
@@ -244,15 +251,33 @@ footer a{color:inherit}
 .install button{margin-top:10px;margin-right:6px;padding:7px 14px;border-radius:8px;border:1px solid var(--line);
  background:transparent;color:var(--ink);font:inherit;font-size:12.5px;cursor:pointer}
 .install #i-add{background:var(--me);border-color:var(--me);color:#fff}
-/* 카드 획득 연출 */
+/* 카드 획득 — 잔에 술을 따르고(1.1초) 카드가 돌아 나온다 */
 .got{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;
- background:rgba(20,18,15,.55);opacity:0;transition:opacity .28s;pointer-events:none;backdrop-filter:blur(2px)}
+ background:rgba(20,18,15,.6);opacity:0;transition:opacity .28s;backdrop-filter:blur(3px)}
 .got.on{opacity:1}
-.got-in{text-align:center;transform:scale(.82) rotateY(-24deg);transition:transform .42s cubic-bezier(.2,.9,.3,1.2)}
-.got.on .got-in{transform:scale(1) rotateY(0)}
-.got-c{width:170px;margin:0 auto}
+.got-in{text-align:center;perspective:900px}
+.got-pour{transition:opacity .3s,transform .3s}
+.got.done .got-pour{opacity:0;transform:scale(.9);position:absolute;pointer-events:none}
+.pour{width:210px;height:158px;display:block;margin:0 auto}
+.pour .pb{transform-origin:64px 100px;transform:translate(-26px,-14px) rotate(-8deg);opacity:0;
+ animation:pbIn .5s .12s cubic-bezier(.3,.9,.4,1.2) forwards}
+@keyframes pbIn{to{transform:translate(0,0) rotate(34deg);opacity:1}}
+.pour .pj{transform-origin:120px 34px;transform:scaleY(0);opacity:0;
+ animation:pjIn .1s .52s linear forwards, pjOut .12s 1.02s linear forwards}
+@keyframes pjIn{to{transform:scaleY(1);opacity:.9}}
+@keyframes pjOut{to{transform:scaleY(0);opacity:0}}
+.pour .pl{animation:plUp .52s .56s cubic-bezier(.4,0,.5,1) forwards}
+@keyframes plUp{to{y:100}}
+/* 카드 — 따르기가 끝나면 한 바퀴 돌며 나온다 */
+.got-card{opacity:0;transform:rotateY(-180deg) scale(.7);
+ transition:opacity .34s,transform .62s cubic-bezier(.25,.9,.3,1.15)}
+.got.done .got-card{opacity:1;transform:rotateY(0) scale(1)}
+.got-c{width:176px;margin:0 auto}
 .got-t{font-size:12.5px;color:#e7e4dc;margin-bottom:12px;letter-spacing:.02em}
 .got-n{font-family:var(--mono);font-size:11px;color:#c9a86a;margin-top:11px}
+@media(prefers-reduced-motion:reduce){
+ .pour .pb,.pour .pj,.pour .pl{animation:none}
+ .got-card{transition:opacity .2s}}
 .toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
  padding:10px 18px;border-radius:99px;font-size:13px;z-index:70;opacity:0;pointer-events:none;
  transition:opacity .25s}
@@ -374,5 +399,5 @@ footer a{color:inherit}
 </div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260917154855"></script>
+<script src="./app.min.js?v=20260917205842"></script>
 </body></html>
