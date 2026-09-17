@@ -105,16 +105,15 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
 /* 뒤집히는 카드가 옆 카드 아래로 들어가 글자가 섞여 보였다 */
 .c.flip{z-index:5}
 .c .inner{will-change:transform}
-.c.prem .face{background:linear-gradient(168deg,#232019,#15130f);border-color:#3a3225;
- box-shadow:0 1px 2px rgba(0,0,0,.4),0 8px 20px -8px rgba(0,0,0,.6)}
-@media(prefers-color-scheme:dark){.c.prem .face{border-color:#6d5c33;
- box-shadow:0 1px 2px rgba(0,0,0,.5),0 8px 22px -8px rgba(0,0,0,.75),inset 0 0 0 1px rgba(181,135,44,.18)}}
+.c.prem .face{border-color:var(--gold);
+ box-shadow:0 1px 2px rgba(33,29,24,.06),0 6px 16px -6px rgba(33,29,24,.22),
+  inset 0 0 0 1px rgba(181,135,44,.28)}
 /* 빛 — 프리미엄 카드에 비스듬히 지나가는 광택 */
 .c .face::after{content:'';position:absolute;inset:0;pointer-events:none;
  background:linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 32%,
   rgba(255,255,255,0) 60%,rgba(255,255,255,.1) 100%);opacity:.5}
-.c.prem .face::after{background:linear-gradient(115deg,rgba(201,168,106,.16) 0%,rgba(201,168,106,0) 34%,
-  rgba(201,168,106,0) 62%,rgba(255,240,200,.1) 100%);opacity:.9}
+.c.prem .face::after{background:linear-gradient(115deg,rgba(181,135,44,.12) 0%,rgba(181,135,44,0) 34%,
+  rgba(181,135,44,0) 62%,rgba(255,240,200,.14) 100%);opacity:.9}
 .c .band{position:absolute;top:0;left:0;right:0;height:4px;z-index:1}
 .c .pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .c .face.haspic{justify-content:flex-end}
@@ -135,42 +134,42 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
 .c .glyph{position:absolute;top:10px;left:11px;width:23px;height:23px;border-radius:50%;
  border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;
  font-family:var(--disp);font-size:11px;color:var(--ink2);z-index:2}
-.c.prem .glyph{border-color:rgba(201,168,106,.5);color:#c9a86a}
+.c.prem .glyph{border-color:rgba(181,135,44,.55);color:var(--gold)}
 .c .jp{font-family:var(--disp);font-size:23px;line-height:1.1;position:relative;z-index:2;
  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .c .jp.sm{font-size:19px}
 .c .jp.xs{font-size:15.5px;letter-spacing:-.02em}
-.c.prem .jp{color:#efe6d4}
+
 .c .ko{font-size:10.5px;color:var(--ink2);margin-top:3px;line-height:1.4;position:relative;z-index:2;
  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.c.prem .ko{color:#b7ac97}
+
 .c .foot{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:7px;
  border-top:1px solid var(--hair);font-size:9px;color:var(--ink3);font-family:var(--mono);
  position:relative;z-index:2}
-.c.prem .foot{border-color:rgba(201,168,106,.25);color:rgba(201,168,106,.75)}
+.c.prem .foot{border-color:rgba(181,135,44,.3)}
 /* 뒷면 */
 .c .bk-t{font-size:10px;color:var(--ink3);font-family:var(--mono);letter-spacing:.04em;
  margin-left:30px;line-height:23px}
-.c.prem .bk-t{color:rgba(201,168,106,.7)}
+
 .c .bk-r{display:flex;justify-content:space-between;gap:6px;font-size:10.5px;
  color:var(--ink2);margin-top:5px;line-height:1.45}
-.c.prem .bk-r{color:#b7ac97}
+
 .c .bk-r b{font-weight:600;color:var(--ink)}
-.c.prem .bk-r b{color:#efe6d4}
+
 .c .bk-memo{margin-top:8px;font-size:10.5px;line-height:1.5;color:var(--ink2);
  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.c.prem .bk-memo{color:#b7ac97}
+
 .c .bk-btn{position:absolute;left:12px;right:12px;bottom:11px;padding:7px 0;border-radius:8px;
  border:1px solid var(--line);text-align:center;font-size:11px;color:var(--ink);background:transparent;z-index:3}
-.c.prem .bk-btn{border-color:rgba(201,168,106,.4);color:#efe6d4}
-.c.locked .face{opacity:.45;filter:saturate(.3)}
+.c.prem .bk-btn{border-color:rgba(181,135,44,.45)}
+.c.locked .face{filter:grayscale(1);opacity:.88}
 .c .noted{position:absolute;top:10px;right:11px;font-family:var(--disp);font-size:12px;color:var(--gold);z-index:2}
 .c .no{position:absolute;top:13px;right:11px;font-family:var(--mono);font-size:8.5px;
  color:var(--ink3);letter-spacing:.02em;z-index:2}
-.c.prem .no{color:rgba(201,168,106,.65)}
+
 .c .noted ~ .no{right:28px}
 .c .rk{font-style:normal;font-family:var(--disp);color:var(--gold);margin-right:6px}
-.c.prem .rk{color:#c9a86a}
+
 .more{display:block;width:100%;margin-top:18px;padding:12px;border-radius:10px;border:1px solid var(--line);
  background:transparent;color:var(--ink2);font:inherit;font-size:13px;cursor:pointer}
 .count{font-size:11.5px;color:var(--ink3);margin-bottom:10px;font-family:var(--mono)}
@@ -380,5 +379,5 @@ footer a{color:inherit}
 </div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260917141626"></script>
+<script src="./app.min.js?v=20260917143844"></script>
 </body></html>
