@@ -27,6 +27,8 @@
  --hair:#cfc7b6;--gold:#b5872c;--me:#1f6f4a;
  --disp:"Yu Mincho","Hiragino Mincho ProN","Nanum Myeongjo",serif;
  --body:system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif;--mono:ui-monospace,Menlo,monospace}
+/* iOS 가로로 돌렸다 세울 때 글자만 키우는 동작을 막는다 — 레이아웃이 어긋난다 */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media(prefers-color-scheme:dark){:root{--bg:#151412;--card:#1f1d1a;--ink:#efe9dd;--ink2:#a7a093;
  --ink3:#6f6a5f;--line:#2f2c27;--hair:#3a352d;--me:#4fb07f}}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -67,7 +69,7 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
 /* 검색 */
 .toolbar{display:flex;gap:8px;margin:14px 0 10px;position:sticky;top:0;background:var(--bg);
  padding:8px 0;z-index:20}
-.toolbar input,.toolbar select{font:inherit;font-size:13.5px;padding:10px 12px;border-radius:9px;
+.toolbar input,.toolbar select{font:inherit;font-size:16px;padding:9px 12px;border-radius:9px;
  border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .toolbar input{flex:1;min-width:0}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
@@ -107,7 +109,10 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
  border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;
  font-family:var(--disp);font-size:11px;color:var(--ink2);z-index:2}
 .c.prem .glyph{border-color:rgba(201,168,106,.5);color:#c9a86a}
-.c .jp{font-family:var(--disp);font-size:23px;line-height:1.1;position:relative;z-index:2}
+.c .jp{font-family:var(--disp);font-size:23px;line-height:1.1;position:relative;z-index:2;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c .jp.sm{font-size:19px}
+.c .jp.xs{font-size:15.5px;letter-spacing:-.02em}
 .c.prem .jp{color:#efe6d4}
 .c .ko{font-size:10.5px;color:var(--ink2);margin-top:3px;line-height:1.4;position:relative;z-index:2;
  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -165,9 +170,9 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
 .temp b{display:block;font-family:var(--disp);font-size:14px}
 .temp span{display:block;font-size:8.5px;color:var(--ink3);margin-top:2px;line-height:1.3}
 .temp.on{border-color:var(--me);box-shadow:inset 0 0 0 1px var(--me)}
-textarea{width:100%;min-height:58px;padding:10px;font:inherit;font-size:13.5px;border-radius:9px;
+textarea{width:100%;min-height:58px;padding:10px;font:inherit;font-size:16px;border-radius:9px;
  border:1px solid var(--line);background:transparent;color:var(--ink);resize:vertical}
-input[type=date]{width:100%;padding:10px;font:inherit;font-size:13.5px;border-radius:9px;
+input[type=date]{width:100%;padding:10px;font:inherit;font-size:16px;border-radius:9px;
  border:1px solid var(--line);background:transparent;color:var(--ink)}
 .badges{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:11px}
 .bdg{border:1px solid var(--line);border-radius:10px;padding:9px 10px;opacity:.45}
@@ -314,5 +319,5 @@ footer a{color:inherit}
 </div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260916221827"></script>
+<script src="./app.min.js?v=20260917095333"></script>
 </body></html>
