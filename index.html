@@ -23,9 +23,16 @@
 <meta property="og:image:alt" content="사케 카드 세 장이 겹쳐 있는 그림과 「마신 사케를 카드로 모읍니다」라는 문구">
 <meta name="twitter:card" content="summary_large_image">
 <style>
+/* 제목용 한글 명조 — iOS 에는 한글 명조가 없어(기본이 Apple SD Gothic Neo 하나)
+   serif 를 지정해도 아이폰에서는 고딕으로 그려진다. 맥에서 보는 화면과 달라지므로
+   쓰는 글자만 담은 서브셋(504자·76KB)으로 고정한다. 본문·메모는 시스템 고딕 그대로.
+   원본: Noto Serif KR (SIL OFL 1.1) */
+@font-face{font-family:"SerifKO";src:url("./font/serif-ko.woff2") format("woff2");
+ font-weight:400 700;font-display:swap;
+ unicode-range:U+AC00-D7A3,U+1100-11FF,U+3130-318F}
 :root{--bg:#e7e4dc;--card:#f4f1e9;--ink:#211d18;--ink2:#6b655b;--ink3:#9a9284;--line:#ded8ca;
  --hair:#cfc7b6;--gold:#b5872c;--me:#1f6f4a;
- --disp:"Yu Mincho","Hiragino Mincho ProN","Nanum Myeongjo",serif;
+ --disp:"SerifKO","Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
  --body:system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif;--mono:ui-monospace,Menlo,monospace}
 /* iOS 가로로 돌렸다 세울 때 글자만 키우는 동작을 막는다 — 레이아웃이 어긋난다 */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -416,5 +423,5 @@ footer a{color:inherit}
 </div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260918095542"></script>
+<script src="./app.min.js?v=20260918100623"></script>
 </body></html>
