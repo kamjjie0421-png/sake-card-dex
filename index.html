@@ -228,6 +228,23 @@ input[type=date]{width:100%;padding:10px;font:inherit;font-size:16px;border-radi
 .tl-y{flex:0 0 auto;font-size:11px;color:var(--ink3)}
 .tl-m{flex:1 1 100%;font-size:11px;color:var(--ink2);line-height:1.5;
  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* 「어땠어요?」 — 한 번 누르면 기록이 남는다. 시트를 열자마자 이것만 보여야 한다. */
+.acts.sub button{font-size:12.5px;padding:10px 6px;color:var(--ink2)}
+.quick{margin:20px 0 4px;text-align:center}
+.qt{font-family:var(--disp);font-size:19px;margin-bottom:12px}
+.qb{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.q{padding:15px 4px;border-radius:12px;border:1px solid var(--line);background:var(--card);
+ color:var(--ink);font:inherit;font-size:15px;font-family:var(--disp);cursor:pointer;
+ transition:background .15s,border-color .15s,transform .12s}
+.q:active{transform:scale(.97)}
+.q.on{background:var(--me);border-color:var(--me);color:#fff}
+.qs{font-size:11.5px;color:var(--ink3);margin-top:9px;line-height:1.6;word-break:keep-all}
+/* 나머지는 접어 둔다 */
+.more{display:block;width:100%;margin:20px 0 4px;padding:12px;border-radius:11px;
+ border:1px dashed var(--line);background:transparent;color:var(--ink2);font:inherit;
+ font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.more span{color:var(--ink3);font-size:15px}
+.sec h3 .opt{font-weight:400;font-size:11px;color:var(--ink3);margin-left:8px}
 .again{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .ag{padding:9px 3px;border-radius:9px;border:1px solid var(--line);text-align:center;font-size:12.5px;cursor:pointer}
 .ag.on{background:var(--me);color:#fff;border-color:var(--me)}
@@ -294,14 +311,14 @@ footer a{color:inherit}
  <section id="p-home" class="pane on">
   <div class="stats">
    <div class="stat"><b id="s-mine">0</b><span>내 카드</span></div>
-   <div class="stat"><b id="s-note">0</b><span>노트</span></div>
+   <div class="stat"><b id="s-note">0</b><span>기록</span></div>
    <div class="stat"><b id="s-brew">0</b><span>양조장</span></div>
    <div class="stat"><b id="s-brand">0</b><span>브랜드</span></div>
   </div>
   <div id="home-empty" class="empty">
    <h3>첫 카드를 만들어 보세요</h3>
    <p>도감에서 마신 사케를 찾아 <b>「마셨어요」</b>를 누르면 카드가 됩니다.<br>
-      카드를 열면 맛 6축을 그려 테이스팅 노트를 남길 수 있습니다.</p>
+      카드를 열고 「좋았다」만 눌러도 기록이 됩니다.</p>
    <button class="btn" onclick="go('dex')">도감에서 찾기</button>
   </div>
   <div id="home-gauge" style="margin-top:14px" hidden></div>
@@ -349,14 +366,14 @@ footer a{color:inherit}
  <section id="p-stat" class="pane">
   <div class="empty" id="stat-empty" style="text-align:left">
    <h3>아직 볼 게 없어요</h3>
-   <p>카드를 담고 테이스팅 노트를 쓰면 여기에 내 취향이 그려집니다.</p>
+   <p>카드를 담고 몇 잔 기록하면 여기에 내 취향이 그려집니다.</p>
   </div>
   <div id="stat-body"></div>
  </section>
 
  <section id="p-me" class="pane">
   <div class="empty" style="text-align:left">
-   <h3>내 기록</h3>
+   <h3>모은 것</h3>
    <p id="me-sum">—</p>
    <div class="acts" style="margin-top:16px">
     <button id="exp">내 기록 내보내기</button>
@@ -399,5 +416,5 @@ footer a{color:inherit}
 </div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260917205842"></script>
+<script src="./app.min.js?v=20260918091423"></script>
 </body></html>
