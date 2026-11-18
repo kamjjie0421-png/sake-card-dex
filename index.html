@@ -88,6 +88,72 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
 .toolbar input,.toolbar select{font:inherit;font-size:16px;padding:9px 12px;border-radius:9px;
  border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .toolbar input{flex:1;min-width:0}
+.c.wc .jp.wn{font-family:var(--disp);font-size:15px;line-height:1.2;margin-top:auto;white-space:normal;overflow:hidden;text-overflow:clip;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;word-break:keep-all;overflow-wrap:anywhere}
+.c.wc .bottle{height:46%}
+.c.wc .jp.wn.sm{font-size:13px}.c.wc .jp.wn.xs{font-size:11.5px;letter-spacing:-.01em}
+.c.wc .noted{font-family:var(--mono);font-size:10px}
+.chips.seg{margin-top:16px}
+/* 와인 평점 */
+.c.wc .wbk{position:absolute;top:44px;left:12px;right:12px;bottom:46px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 calc(100% - 18px),transparent);mask-image:linear-gradient(#000 calc(100% - 18px),transparent)}
+.c.wc .bk-memo{-webkit-line-clamp:6}
+.c .wrate{font:inherit;font-size:11px;cursor:pointer}
+.wr-v{display:flex;align-items:center;justify-content:center;gap:12px}
+.wr-v b{font-family:var(--disp);font-size:46px;color:var(--gold);font-weight:500;min-width:84px;line-height:1}
+.wr-v span{color:var(--ink3);font-size:13px}
+.wr-s{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;cursor:pointer}
+#wr-r{width:100%;margin:16px 0 4px;accent-color:var(--gold)}
+.wr-q{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wr-q button{padding:9px 0;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink2);font:inherit;font-size:12.5px;cursor:pointer}
+#wr-m{width:100%;min-height:64px}
+/* 집에 있는 와인 */
+.cl-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:2px;margin-top:12px}
+.cl-bar i{display:block}
+.cl-leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:9px;font-size:12px;color:var(--ink2)}
+.cl-leg span{display:flex;align-items:center;gap:5px}.cl-leg b{color:var(--ink);font-weight:600}
+.cl-leg i{width:9px;height:9px;border-radius:50%}
+.cl-lane{margin-top:14px}
+.cl-lane h4{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.cl-lane h4 b{font-family:var(--disp);font-weight:500;color:var(--gold);font-size:15px}
+.cl-ths{display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:8px}
+.cl-th{display:flex;flex-direction:column;align-items:center;gap:4px;background:transparent;border:0;padding:0;color:var(--ink2);cursor:pointer;font:inherit}
+.cl-th img{height:74px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.cl-th i{width:14px;height:60px;border-radius:5px;margin:7px 0}
+.cl-th span{font-size:10px;line-height:1.3;text-align:center;word-break:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cl-w{display:grid;grid-template-columns:64px 1fr 22px;align-items:center;gap:4px 8px;margin-top:10px;font-size:13px}
+.cl-wc{font-weight:600}.cl-w b{font-size:12px;color:var(--ink3);text-align:right;font-weight:500}
+.cl-wb{height:8px;background:var(--hair);border-radius:4px;overflow:hidden}.cl-wb i{display:block;height:100%;background:var(--gold)}
+.cl-wr{grid-column:2/4;font-size:11px;color:var(--ink3);line-height:1.5}
+.c.cl .cl-dr{font-family:var(--body);font-size:10px;padding:2px 7px;border-radius:99px;border:1px solid rgba(212,167,63,.45)}
+.cl-hd{display:flex;gap:14px;align-items:flex-start}
+.cl-hd img,.cl-hd .bottle{height:150px;width:auto;max-width:34%;object-fit:contain;flex:0 0 auto}
+.cl-tp{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:99px;color:#fff}
+.cl-path{font-size:12px;color:var(--ink2);margin-top:8px;line-height:1.6}.cl-path span{color:var(--ink3)}
+.cl-p{display:grid;grid-template-columns:40px auto 1fr;align-items:center;gap:10px;margin:8px 0;font-size:13px}
+.cl-dots{display:flex;gap:4px}.cl-dots i{width:22px;height:8px;border-radius:4px;background:var(--hair)}
+.cl-p em{font-style:normal;font-size:11.5px;color:var(--ink3)}
+.cl-step{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.cl-step span{font-size:11.5px;text-align:center;padding:9px 4px;border-radius:9px;border:1px solid var(--line);color:var(--ink3);line-height:1.35}
+.cl-step span.on{color:var(--ink);font-weight:600;border-width:2px;background:var(--card)}
+.cl-desc{font-size:13.5px;line-height:1.75;color:var(--ink)}
+.cl-chk{font-size:12px;line-height:1.6;color:var(--ink2);background:var(--card);border:1px dashed var(--hair);border-radius:9px;padding:9px 11px}
+.wst{text-align:left;padding:18px 16px;margin-bottom:12px;border-style:solid}
+.wst-sum{font-size:13.5px;line-height:1.8;color:var(--ink2)}
+.wst-sum b{color:var(--ink);font-weight:600}
+.wst-f{font-size:11px!important;color:var(--ink3)!important;margin-top:10px;line-height:1.6!important}
+.wst-r{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.4}
+.wst-r span{flex:1}.wst-r b{font-weight:600}.wst-r i{font-style:normal;font-size:11px;color:var(--ink3)}
+.wst-r em{font-style:normal;font-family:var(--disp);font-size:17px;color:var(--gold)}
+.wst-n{font-family:var(--body);font-size:11px;color:var(--ink3);margin-left:6px}
+.wdx-sec{font-size:12px;color:var(--ink3);margin:18px 0 8px;font-weight:600;letter-spacing:.04em}
+.wdx{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:var(--card)}
+.wdx:not(.on){opacity:.55}
+.wdx-h{display:flex;align-items:center;gap:8px}
+.wdx-h i{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.wdx-h b{font-size:13.5px;font-weight:600;flex:1}
+.wdx-h span{font-size:11.5px;color:var(--ink2);font-family:var(--mono)}
+.wdx p{font-size:11.5px;color:var(--ink2);margin:4px 0 0 17px;line-height:1.5}
+.wdx-l{display:flex;flex-wrap:wrap;gap:4px;margin:7px 0 0 17px}
+.wdx-l span{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--line);color:var(--ink)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .chips.stick{position:sticky;top:53px;background:var(--bg);z-index:19;padding:2px 0 6px;margin-bottom:6px}
 .chips.scrollx.stick{top:92px}
@@ -141,7 +207,8 @@ h1{font-family:var(--disp);font-weight:500;font-size:25px;margin:6px 0 0}
 .c .pic{position:absolute;left:6%;right:6%;top:7%;width:88%;height:54%;
  object-fit:contain;object-position:center;z-index:0}
 .picbox{position:relative;margin:14px 0 4px}
-.picbox img{width:100%;border-radius:12px;display:block}
+.picbox{text-align:center}
+.picbox img{max-width:100%;max-height:38vh;width:auto;border-radius:12px;display:inline-block;vertical-align:top}
 .picx{position:absolute;right:10px;bottom:10px;padding:6px 11px;border-radius:8px;
  border:1px solid rgba(255,255,255,.45);background:rgba(20,18,15,.55);color:#fff;font:inherit;font-size:11.5px}
 .c .bottle{position:absolute;left:50%;top:9%;transform:translateX(-50%);height:52%;width:auto;pointer-events:none}
@@ -315,6 +382,41 @@ footer a{color:inherit}
  padding:10px 18px;border-radius:99px;font-size:13px;z-index:70;opacity:0;pointer-events:none;
  transition:opacity .25s}
 .toast.on{opacity:1}
+
+/* 빠르게 훑어 기록하기 — 한 화면에 한 병만 두고, 누르면 곧바로 다음 병이 온다.
+   시트를 열고 닫는 왕복이 사라져야 100장을 앉은 자리에서 끝낼 수 있다. */
+.qrun{position:fixed;inset:0;z-index:70;background:var(--bg);display:flex;flex-direction:column;
+ padding:calc(env(safe-area-inset-top) + 10px) 16px calc(env(safe-area-inset-bottom) + 14px)}
+.qrun[hidden]{display:none}
+.qr-top{display:flex;align-items:center;gap:12px;max-width:520px;width:100%;margin:0 auto}
+.qr-prog{flex:1;height:3px;border-radius:99px;background:var(--line);overflow:hidden}
+.qr-prog i{display:block;height:100%;background:var(--gold);transition:width .18s}
+.qr-n{font-family:var(--mono);font-size:11px;color:var(--ink3);flex:0 0 auto}
+.qr-x{flex:0 0 auto;border:0;background:transparent;color:var(--ink2);font:inherit;font-size:13px;
+ padding:6px 2px 6px 8px;cursor:pointer}
+.qr-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:14px;max-width:520px;width:100%;margin:0 auto;min-height:0;padding:8px 0}
+.qr-pic{flex:0 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;width:100%}
+.qr-pic img{max-height:38vh;max-width:64%;object-fit:contain}
+.qr-pic svg{max-height:38vh;width:auto}
+.qr-name{font-family:var(--disp);font-size:29px;font-weight:500;text-align:center;line-height:1.25}
+.qr-meta{font-size:12.5px;color:var(--ink2);text-align:center;line-height:1.6;margin-top:-6px}
+.qr-acts{max-width:520px;width:100%;margin:0 auto;flex:0 0 auto}
+.qr-ask{text-align:center;font-size:13px;color:var(--ink2);margin-bottom:10px}
+.qr-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.qr-btns button{padding:17px 4px;border-radius:13px;border:1px solid var(--line);background:var(--card);
+ color:var(--ink);font:inherit;font-size:15px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.qr-btns button:active{background:var(--me);border-color:var(--me);color:#fff}
+.qr-sub{display:flex;gap:9px;margin-top:9px}
+.qr-sub button{flex:1;padding:11px 4px;border-radius:11px;border:1px solid var(--line);
+ background:transparent;color:var(--ink2);font:inherit;font-size:12.5px;cursor:pointer}
+.qr-sub button:disabled{opacity:.35;cursor:default}
+.qr-done{text-align:center;padding:20px 8px}
+.qr-done h3{font-family:var(--disp);font-size:24px;font-weight:500;margin-bottom:10px}
+.qr-done p{font-size:13.5px;color:var(--ink2);line-height:1.7}
+.qr-done button{margin-top:18px;padding:13px 26px;border-radius:12px;border:0;background:var(--gold);
+ color:#1a1712;font:inherit;font-size:14px;cursor:pointer}
+@media(max-height:680px){.qr-name{font-size:24px}.qr-pic img,.qr-pic svg{max-height:30vh}}
 </style></head><body>
 <div class="app">
  <header>
@@ -378,6 +480,24 @@ footer a{color:inherit}
   </div>
  </section>
 
+ <!-- 와인 -->
+ <section id="p-wine" class="pane">
+  <div class="chips seg">
+   <div class="chip on" data-wseg="mine">마신 와인</div>
+   <div class="chip" data-wseg="cellar">집에 있는</div>
+   <div class="chip" data-wseg="stat">통계</div>
+   <div class="chip" data-wseg="grape">품종 도감</div>
+   <div class="chip" data-wseg="region">산지 도감</div>
+   <div class="chip" data-wseg="seen">본 것</div>
+  </div>
+  <div id="wine-tools">
+   <div class="toolbar"><input id="wq" type="search" placeholder="와인·생산자·품종·산지로 찾기" autocomplete="off"></div>
+   <div class="chips" id="wine-type"></div>
+  </div>
+  <p class="count" id="wine-count"></p>
+  <div id="wine-body"></div>
+ </section>
+
  <!-- 내 정보 -->
  <section id="p-stat" class="pane">
   <div class="empty" id="stat-empty" style="text-align:left">
@@ -417,6 +537,7 @@ footer a{color:inherit}
  <button data-go="home" class="on"><b>家</b>홈</button>
  <button data-go="dex"><b>図</b>도감</button>
  <button data-go="mine"><b>酒</b>내 카드</button>
+ <button data-go="wine"><b>葡</b>와인</button>
  <button data-go="stat"><b>析</b>분석</button>
  <button data-go="me"><b>記</b>기록</button>
 </nav>
@@ -430,7 +551,16 @@ footer a{color:inherit}
   <button id="i-close">알겠습니다</button>
  </div>
 </div>
+<div class="qrun" id="qrun" hidden>
+ <div class="qr-top">
+  <span class="qr-n" id="qr-n"></span>
+  <span class="qr-prog"><i id="qr-bar" style="width:0"></i></span>
+  <button class="qr-x" id="qr-x">그만</button>
+ </div>
+ <div class="qr-body" id="qr-body"></div>
+ <div class="qr-acts" id="qr-acts"></div>
+</div>
 <div class="sheet" id="sheet"><div class="box" id="sheetbox"></div></div>
 <div class="toast" id="toast"></div>
-<script src="./app.min.js?v=20260918102016"></script>
+<script src="./app.min.js?v=20261118182334"></script>
 </body></html>
